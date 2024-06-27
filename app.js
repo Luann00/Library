@@ -36,7 +36,6 @@ function resetValues() {
 
 const showButton = document.getElementById("showDialog");
 const favDialog = document.getElementById("favDialog");
-const selectEl = favDialog.querySelector("select");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 showButton.addEventListener("click", () => {
