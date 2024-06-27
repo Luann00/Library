@@ -13,13 +13,13 @@ function addBookToLibary() {
     let newTitle = document.getElementById('title').value
     let newAuthor = document.getElementById('author').value
     let newPages = document.getElementById('pages').value
-    let read = document.getElementById('read').value
+    let read = document.getElementById('read');
 
     let newBook = new Book(newTitle, newAuthor, newPages, read);
 
     myLibary.push(newBook);
     let newBookIndex = document.createElement("p");
-    newBookIndex.textContent = `Title: ${newTitle}, Author: ${newAuthor}, Pages: ${newPages}, Read: ${read ? "Yes" : "No"}`;
+    newBookIndex.textContent = `Title: ${newTitle}, Author: ${newAuthor}, Pages: ${newPages}, Read: ${read.checked ? "Yes" : "No"}`;
     document.querySelector(".books").appendChild(newBookIndex);
 }
 
