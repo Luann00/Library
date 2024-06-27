@@ -24,6 +24,16 @@ function addBookToLibary() {
 }
 
 
+/*this method gets called after a book was added. all values in the modal gets deleted so at the next time
+a new book gets added, the input texts in the modal are empty and a new book can be added*/
+function resetValues() {
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.checked = false;
+}
+
+
 const showButton = document.getElementById("showDialog");
 const favDialog = document.getElementById("favDialog");
 const selectEl = favDialog.querySelector("select");
@@ -36,5 +46,6 @@ showButton.addEventListener("click", () => {
 confirmBtn.addEventListener("click", (event) => {
     event.preventDefault(); 
     addBookToLibary();
+    resetValues();
     favDialog.close();
   });
