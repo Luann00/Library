@@ -48,19 +48,25 @@ function addBookToLibrary() {
     cellPages.style.height = "60px";
 
     const cellRead = document.createElement('td');
-    cellRead.textContent = newBook.read ? "Yes" : "No";
+    const readCheckbox = document.createElement('input');
+    readCheckbox.type = 'checkbox';
+    readCheckbox.checked = read;
     cellRead.style.width = "100px";
     cellRead.style.height = "60px";
+    readCheckbox.style.width = "30px";
+    readCheckbox.style.height = "30px";
+
+    cellRead.appendChild(readCheckbox);
 
     const cellDeleteButton = document.createElement('td');
-    cellRead.textContent = newBook.read ? "Yes" : "No";
-    cellRead.style.width = "100px";
-    cellRead.style.height = "60px";
+    
 
     const deleteBookButton = document.createElement('button');
     deleteBookButton.style.width = "100px";
     deleteBookButton.style.height = "30px";
     deleteBookButton.style.alignSelf = "center";
+    deleteBookButton.style.color = "Red";
+    deleteBookButton.textContent = "Delete";
 
     cellDeleteButton.appendChild(deleteBookButton);
 
