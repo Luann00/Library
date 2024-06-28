@@ -1,8 +1,5 @@
 const myLibrary = [];
 
-/*this attribut checks if a first book was created. If yes, the function addBookToLibrary will create a new Table*/
-let firstTime = true;
-
 
 function Book(title, author, pages, read, id) {
     this.title = title;
@@ -29,33 +26,7 @@ function addBookToLibrary() {
 
     /* if a book is added for the first time, a new table with headers is created which give information about the
     book such as the title of the book, author ect.*/
-    if (firstTime) {
-        const headerRow = document.createElement('tr');
 
-        const headerTitle = document.createElement('th');
-        headerTitle.textContent = "Title";
-        headerRow.appendChild(headerTitle);
-
-        const headerAuthor = document.createElement('th');
-        headerAuthor.textContent = "Author";
-        headerRow.appendChild(headerAuthor);
-
-        const headerPages = document.createElement('th');
-        headerPages.textContent = "Pages";
-        headerRow.appendChild(headerPages);
-
-        const headerRead = document.createElement('th');
-        headerRead.textContent = "Read";
-        headerRow.appendChild(headerRead);
-
-
-        const deleteButton = document.createElement('th');
-        deleteButton.textContent = "Edit";
-        headerRow.appendChild(deleteButton);
-
-        table.appendChild(headerRow);
-        firstTime = false;
-    }
 
     const row = document.createElement('tr');
     row.id = `${myLibrary.length - 1}`
@@ -99,13 +70,13 @@ function addBookToLibrary() {
         event.preventDefault();
         for (let i = 0; i < myLibrary.length; i++) {
             if (myLibrary.length == 1) {
-                alert("one row!");
-                table.deleteRow(0);
+                table.deleteRow(1);
+                myLibrary.splice(0, 1);
                 break;
             }
             if (myLibrary[i].id == row.id) {
                 table.deleteRow(i);
-                alert(myLibrary.length);
+                myLibrary.splice(i, 1);
             }
         }
     });
@@ -133,6 +104,7 @@ function resetValues() {
 const showButton = document.getElementById("showDialog");
 const favDialog = document.getElementById("favDialog");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
+
 
 showButton.addEventListener("click", () => {
     favDialog.showModal();
