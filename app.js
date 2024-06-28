@@ -15,7 +15,7 @@ function addBookToLibrary() {
     let newAuthor = document.getElementById('author').value;
     let newPages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked; // use checked property to get boolean value
-    let newBook = new Book(newTitle, newAuthor, newPages, read, `${myLibrary.length - 1}`);
+    let newBook = new Book(newTitle, newAuthor, newPages, read, `${myLibrary.length}`);
 
 
     myLibrary.push(newBook);
@@ -31,8 +31,6 @@ function addBookToLibrary() {
     const row = document.createElement('tr');
     row.id = `${myLibrary.length - 1}`
     table.appendChild(row);
-
-    alert(row.id);
 
     const cellTitle = document.createElement('td');
     cellTitle.textContent = newBook.title;
@@ -68,17 +66,7 @@ function addBookToLibrary() {
 
     deleteBookButton.addEventListener("click", (event) => {
         event.preventDefault();
-        for (let i = 0; i < myLibrary.length; i++) {
-            if (myLibrary.length == 1) {
-                table.deleteRow(1);
-                myLibrary.splice(0, 1);
-                break;
-            }
-            if (myLibrary[i].id == row.id) {
-                table.deleteRow(i);
-                myLibrary.splice(i, 1);
-            }
-        }
+        deleteBook(row.id);
     });
 
 
@@ -98,6 +86,24 @@ function resetValues() {
     author.value = "";
     pages.value = "";
     read.checked = false;
+}
+
+
+function deleteBook(id) {
+    const table = document.querySelector('#pixelCanvas');
+    const row = document.getElementById(id);
+    if (row) {
+        table.removeChild(row);
+        myLibrary.splice(id, 1);
+        updateRowIds();
+    }
+}
+
+function updateRowIds() {
+    const table = document.querySelector('#pixelCanvas');
+    for (let i = 0; i < table.rows.length; i++) {
+        table.rows[i].id = i;
+    }
 }
 
 
