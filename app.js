@@ -4,11 +4,12 @@ const myLibrary = [];
 let firstTime = true;
 
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = id;
 }
 
 
@@ -17,9 +18,12 @@ function addBookToLibrary() {
     let newAuthor = document.getElementById('author').value;
     let newPages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked; // use checked property to get boolean value
+    let newBook = new Book(newTitle, newAuthor, newPages, read, `${myLibrary.length}`);
 
-    let newBook = new Book(newTitle, newAuthor, newPages, read);
+
     myLibrary.push(newBook);
+
+
 
     const table = document.querySelector('#pixelCanvas');
 
@@ -54,7 +58,10 @@ function addBookToLibrary() {
     }
 
     const row = document.createElement('tr');
+    row.id = `${myLibrary.length-1}`
     table.appendChild(row);
+
+    alert(row.id);
 
     const cellTitle = document.createElement('td');
     cellTitle.textContent = newBook.title;
@@ -76,18 +83,37 @@ function addBookToLibrary() {
     cellRead.style.width = "100px";
     cellRead.style.height = "60px";
 
+    const cellDeleteButton = document.createElement('td');
+    cellRead.textContent = newBook.read ? "Yes" : "No";
+    cellRead.style.width = "100px";
+    cellRead.style.height = "60px";
+
     const deleteBookButton = document.createElement('button');
     deleteBookButton.style.width = "100px";
     deleteBookButton.style.height = "30px";
     deleteBookButton.style.alignSelf = "center";
+
+    cellDeleteButton.appendChild(deleteBookButton);
+
+    deleteBookButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        for (let i = 0; i < myLibrary.length; i++) {
+            if(myLibrary.length == 1) {
+                table.deleteRow(1);
+                break;
+            }
+            if (myLibrary[i].id == row.id) {
+                table.deleteRow(i);
+            }
+        }
+    });
 
 
     row.appendChild(cellTitle);
     row.appendChild(cellAuthor);
     row.appendChild(cellPages);
     row.appendChild(cellRead);
-    row.appendChild(deleteBookButton);
-
+    row.appendChild(cellDeleteButton);
 }
 
 
