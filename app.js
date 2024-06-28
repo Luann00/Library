@@ -18,7 +18,7 @@ function addBookToLibrary() {
     let newAuthor = document.getElementById('author').value;
     let newPages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked; // use checked property to get boolean value
-    let newBook = new Book(newTitle, newAuthor, newPages, read, `${myLibrary.length}`);
+    let newBook = new Book(newTitle, newAuthor, newPages, read, `${myLibrary.length - 1}`);
 
 
     myLibrary.push(newBook);
@@ -58,7 +58,7 @@ function addBookToLibrary() {
     }
 
     const row = document.createElement('tr');
-    row.id = `${myLibrary.length-1}`
+    row.id = `${myLibrary.length - 1}`
     table.appendChild(row);
 
     alert(row.id);
@@ -98,12 +98,14 @@ function addBookToLibrary() {
     deleteBookButton.addEventListener("click", (event) => {
         event.preventDefault();
         for (let i = 0; i < myLibrary.length; i++) {
-            if(myLibrary.length == 1) {
-                table.deleteRow(1);
+            if (myLibrary.length == 1) {
+                alert("one row!");
+                table.deleteRow(0);
                 break;
             }
             if (myLibrary[i].id == row.id) {
                 table.deleteRow(i);
+                alert(myLibrary.length);
             }
         }
     });
