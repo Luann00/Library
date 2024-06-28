@@ -16,33 +16,34 @@
         <form>
             <p>
                 <label>
-                    Title:
+                    <strong> Title </strong>
                 </label>
                 <input type="text" id="title">
             </p>
 
             <p>
                 <label>
-                    Author
+                    <strong> Author </strong>
+
                 </label>
                 <input type="text" id="author">
             </p>
 
             <p>
                 <label>
-                    Pages:
+                    <strong> Pages: </strong>
                 </label>
                 <input type="number" id="pages">
 
             </p>
             <p>
                 <label>
-                    Already read?:
+                    <strong> Read? </strong>
                 </label>
                 <input type="checkbox" id="read">
             </p>
-            <div>
-                <button value="cancel" onclick="resetValues()" formmethod="dialog">Cancel</button>
+            <div id="buttons">
+                <button id="cancelBtn" value="cancel" onclick="resetValues()" formmethod="dialog">Cancel</button>
                 <button id="confirmBtn" value="default">Confirm</button>
             </div>
         </form>

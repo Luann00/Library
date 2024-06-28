@@ -10,6 +10,11 @@ body {
   font-size: 25px;
 }
 
+.books {
+  margin-top:0%;
+}
+
+
 table,
 th,
 td {
@@ -17,9 +22,9 @@ td {
 }
 
 
+
 #pixelCanvas {
   border-collapse: collapse;
-  margin: 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
@@ -30,24 +35,41 @@ td {
 #pixelCanvas thead tr {
   background-color: #009879;
   color: #ffffff;
-  text-align: left;
+  text-align: center;
 }
 
 #pixelCanvas th,
 #pixelCanvas tr {
   padding: 12px 15px;
+  text-align:center;
+}
 
+#favDialog{
+  border-radius:30px;
 }
 
 
 button,
 input {
-  font-size: 35px;
+  font-size: 25px;
 }
 
-input[type=checkbox] {
-  transform: scale(1.5);
+#buttons{
+  display:flex;
+  align-items: center;
+  justify-content: center;  
+}  
+
+#confirmBtn{
+  margin-left:2%;
 }
+
+
+#read{
+  width:20px;
+  height:20px;
+}
+
 
 p {
   display: flex;
